@@ -62,7 +62,7 @@ def upload_image(access_token, path):
     with open(path, "rb") as f:
         r = requests.post(f"{KAPI}/v2/api/talk/message/image/upload",
                           headers={"Authorization": f"Bearer {access_token}"},
-                          files={"image": (os.path.basename(path), f, "image/png")},
+                          files={"file": (os.path.basename(path), f, "image/png")},
                           timeout=60)
     r.raise_for_status()
     return r.json()["infos"]["original"]["url"]

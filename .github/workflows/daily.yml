@@ -22,7 +22,7 @@ jobs:
       KAKAO_REST_KEY: ${{ secrets.KAKAO_REST_KEY }}
       KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
       TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
-      START_DATE: "2026-08-20"
+      START_DATE: "2026-08-19"
       CHROME_BIN: google-chrome
     steps:
       - uses: actions/checkout@v4
