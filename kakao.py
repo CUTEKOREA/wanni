@@ -53,7 +53,7 @@ def refresh(tok):
     tok["access_token"] = j["access_token"]
     if "refresh_token" in j:
         tok["refresh_token"] = j["refresh_token"]
-    save_tokens(tok)
+        save_tokens(tok)  # persist only on rotation; re-encrypting every run churns commits
     return tok
 
 
