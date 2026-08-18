@@ -20,6 +20,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 COURSE_META = {
     "th": dict(title="오늘의 태국어", sl="th", start_env="START_DATE"),
     "en": dict(title="오늘의 영어", sl="en", start_env="START_DATE_EN"),
+    "zh": dict(title="오늘의 중국어", sl="zh-CN", start_env="START_DATE_ZH"),
 }
 
 

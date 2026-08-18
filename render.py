@@ -28,6 +28,10 @@ COURSES = {
                main_font="NSKR, sans-serif", main_size=86,
                band=["#3C3B6E", "#FFFFFF", "#B22234", "#FFFFFF", "#3C3B6E"],
                brand="<b>Today</b> · 매일 오전 11:40"),
+    "zh": dict(csv="expressions_zh.csv", prefix="zh_", label="완니 ZH",
+               main_font="NSSC, NSKR, sans-serif", main_size=110,
+               band=["#DE2910", "#FFDE00", "#DE2910", "#FFDE00", "#DE2910"],
+               brand="<b>今天</b> · 매일 오후 5:30"),
 }
 BAND_FLEX = [1, 1, 2, 1, 1]
 
@@ -36,9 +40,10 @@ CARD_TMPL = """<!doctype html>
 <style>
 @font-face {{ font-family: NSKR; src: url("{root}/fonts/NotoSansKR.ttf"); font-weight: 100 900; }}
 @font-face {{ font-family: NSTH; src: url("{root}/fonts/NotoSansThai.ttf"); font-weight: 100 900; }}
+@font-face {{ font-family: NSSC; src: url("{root}/fonts/NotoSansSC.ttf"); font-weight: 100 900; }}
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
 html, body {{ width: 1080px; height: 1350px; background: #FFFDF6; overflow: hidden;
-  font-family: NSKR, sans-serif; color: #241F14; }}
+  font-family: NSKR, NSSC, sans-serif; color: #241F14; }}
 .band {{ height: 36px; display: flex; flex-direction: column; }}
 .band i {{ display: block; }}
 .page {{ padding: 56px 80px 0; position: relative; height: 1314px; }}
@@ -53,7 +58,7 @@ html, body {{ width: 1080px; height: 1350px; background: #FFFDF6; overflow: hidd
 .div {{ margin-top: 38px; border-top: 3px dashed #E2DBC8; }}
 .vocab {{ margin-top: 36px; }}
 .vocab .row {{ display: flex; align-items: baseline; gap: 26px; margin-bottom: 22px; }}
-.vocab .tw {{ font-family: NSTH, NSKR, sans-serif; font-size: 55px; font-weight: 600; }}
+.vocab .tw {{ font-family: NSTH, NSSC, NSKR, sans-serif; font-size: 55px; font-weight: 600; }}
 .vocab .m {{ font-size: 46px; color: #4C4636; }}
 .vocab .note {{ font-size: 38px; color: #8A8371; margin: -8px 0 22px; }}
 .foot {{ position: absolute; left: 80px; right: 80px; bottom: 58px;
@@ -61,7 +66,7 @@ html, body {{ width: 1080px; height: 1350px; background: #FFFDF6; overflow: hidd
 .foot .cat {{ font-size: 28px; font-weight: 700; color: {accent};
   border: 2.5px solid {accent}; border-radius: 999px; padding: 8px 26px; }}
 .foot .brand {{ font-size: 28px; color: #8A8371; }}
-.foot .brand b {{ font-family: NSTH, NSKR, sans-serif; font-weight: 600; }}
+.foot .brand b {{ font-family: NSTH, NSSC, NSKR, sans-serif; font-weight: 600; }}
 </style>
 <div class="band">{band}</div>
 <div class="page">
