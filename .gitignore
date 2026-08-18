@@ -1,0 +1,8 @@
+out/
+tokens.json
+.venv/
+logs/
+__pycache__/
+.env
+*.html
+!*.yml
