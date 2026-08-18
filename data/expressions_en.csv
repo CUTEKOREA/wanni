@@ -1,0 +1,91 @@
+day,slot,category,ko,text,pron,vocab
+1,1,인사,잘 지내? / 안녕!,What's up?,왓츠 업,what's up:왓츠 업:인사말|대답은 Not much(별일 없어)
+1,2,인사,어떻게 지내?,How's it going?,하우즈 잇 고잉,going:고잉:되어가는|How are you보다 캐주얼
+1,3,인사,별일 없어. 너는?,Not much. How about you?,낫 머치 하우 어바웃 유,not much:낫 머치:별일 없음;how about ~:하우 어바웃:~은 어때
+2,1,리액션,좋아요. / 그렇게 해요.,Sounds good.,사운즈 굿,sound:사운드:~하게 들리다|제안 수락의 국민 표현
+2,2,리액션,괜찮아요. / 신경 쓰지 마세요.,No worries.,노 워리즈,worry:워리:걱정|사과·감사 양쪽에 답으로 씀
+2,3,리액션,저는 그거면 돼요.,That works for me.,댓 웍스 포 미,work:웍:효과가 있다·괜찮다|일정 조율 필수 표현
+3,1,리액션,당연하지. / 물론이요.,For sure.,포 슈어,for sure:포 슈어:확실히|Sure보다 캐주얼한 맞장구
+3,2,리액션,내 잘못이야. / 미안.,My bad.,마이 배드,my bad:마이 배드:내 실수|가벼운 사과 전용
+3,3,리액션,어쩔 수 없지 뭐.,It is what it is.,잇 이즈 왓 잇 이즈,it is what it is:잇 이즈 왓 잇 이즈:상황 수용·체념의 관용구
+4,1,대화,"그러니까 내 말은, 나쁘진 않다는 거야.","I mean, it's not bad.",아이 민 잇츠 낫 배드,I mean:아이 민:말을 고르거나 정정할 때 문두 필러
+4,2,대화,무슨 말인지 알지?,You know what I mean?,유 노 왓 아이 민,you know:유 노:있잖아|동의 구하는 문말 표현
+4,3,대화,그거 말 되네요.,That makes sense.,댓 메익스 센스,make sense:메익 센스:이치에 맞다
+5,1,대화,알겠어. / 이해했어.,Got it.,갓 잇,got:갓:이해했다|OK보다 '접수 완료' 느낌
+5,2,대화,내가 알아서 할게.,I'll figure it out.,아일 피겨 잇 아웃,figure out:피겨 아웃:해결하다·알아내다
+5,3,대화,정해지면 알려줘.,Let me know.,렛 미 노,let me know:렛 미 노:알려줘|문자·이메일 마무리 단골
+6,1,일상,지금 가는 중이야.,I'm on my way.,아임 온 마이 웨이,on my way:온 마이 웨이:가는 중|문자로 OMW로 줄여 씀
+6,2,일상,조금 늦을 것 같아.,I'm running late.,아임 러닝 레잇,running late:러닝 레잇:늦어지고 있는
+6,3,일상,천천히 와. / 서두르지 마.,Take your time.,테익 유어 타임,take one's time:테익 타임:서두르지 않다
+7,1,일상,나도 할래. / 콜!,I'm down.,아임 다운,be down:비 다운:참여 의향 있다|I'm in과 같은 뜻
+7,2,일상,나도 껴줘.,Count me in.,카운트 미 인,count in:카운트 인:포함시키다
+7,3,일상,이번엔 빠질게.,I'll pass this time.,아일 패스 디스 타임,pass:패스:사양하다;this time:디스 타임:이번에는
+8,1,약속,이번 주말에 시간 돼?,Are you free this weekend?,아 유 프리 디스 위켄드,free:프리:한가한;weekend:위켄드:주말
+8,2,약속,언제 커피 한잔하자.,Let's grab coffee sometime.,렛츠 그랩 커피 썸타임,grab:그랩:간단히 먹다·마시다|미국식 약속 표현의 핵심 동사
+8,3,약속,다음으로 미뤄도 될까?,Can I take a rain check?,캔 아이 테익 어 레인 첵,rain check:레인 첵:다음 기회|약속 정중히 미루는 관용구
+9,1,약속,몇 시가 편해?,What time works for you?,왓 타임 웍스 포 유,work for:웍 포:~에게 맞다
+9,2,약속,문자 보낼게.,I'll text you.,아일 텍스트 유,text:텍스트:문자를 보내다(동사)
+9,3,약속,그때 봐.,See you then.,씨 유 덴,then:덴:그때
+10,1,카페,미디엄 아이스커피 하나 주세요.,Can I get a medium iced coffee?,캔 아이 겟 어 미디엄 아이스트 커피,Can I get ~?:캔 아이 겟:주문의 표준 문형|주세요=get
+10,2,카페,드시고 가세요 포장이세요?,For here or to go?,포 히어 오어 투 고,for here:포 히어:매장에서;to go:투 고:포장
+10,3,카페,잔돈은 가지세요.,Keep the change.,킵 더 체인지,change:체인지:잔돈;keep:킵:가지다
+11,1,식당,두 명 자리 있을까요?,Can we get a table for two?,캔 위 겟 어 테이블 포 투,table for two:테이블 포 투:2인석
+11,2,식당,저는 버거로 할게요.,I'll do the burger.,아일 두 더 버거,I'll do ~:아일 두:~로 할게요|주문에서 do가 표준
+11,3,식당,계산서 주시겠어요?,Can we get the check?,캔 위 겟 더 첵,check:첵:계산서(미국)|영국은 bill
+12,1,식당,포장해 주세요.,"To go, please.",투 고 플리즈,to go:투 고:포장으로
+12,2,식당,물 좀 주시겠어요?,Could we get some water?,쿠드 위 겟 썸 워터,some:썸:약간의;water:워터:물
+12,3,식당,전 괜찮아요. 감사해요.,"I'm good, thanks.",아임 굿 땡스,I'm good:아임 굿:사양의 표현|'좋다' 아니라 '됐어요'
+13,1,쇼핑,그냥 둘러보는 중이에요.,"I'm just browsing, thanks.",아임 저스트 브라우징 땡스,browse:브라우즈:둘러보다|점원 응대의 표준 답
+13,2,쇼핑,이거 미디엄 있어요?,Do you have this in a medium?,두 유 해브 디스 인 어 미디엄,in a ~:인 어:~사이즈로
+13,3,쇼핑,이걸로 살게요.,I'll take it.,아일 테익 잇,take:테익:사다|구매 결정의 표준 표현
+14,1,쇼핑,이거 반품할 수 있어요?,Can I return this?,캔 아이 리턴 디스,return:리턴:반품하다
+14,2,쇼핑,생각했던 거랑 달라서요.,It didn't work out.,잇 디든트 웍 아웃,work out:웍 아웃:잘 되다|반품 사유의 완곡어법
+14,3,쇼핑,영수증 여기 있어요.,Here's my receipt.,히어즈 마이 리싯,receipt:리싯:영수증|p는 묵음
+15,1,스몰토크,주말 어땠어?,How was your weekend?,하우 워즈 유어 위켄드,weekend:위켄드:주말|월요일 아침 미국 사무실 단골
+15,2,스몰토크,그럭저럭 잘 지내.,Can't complain.,캔트 컴플레인,complain:컴플레인:불평하다|'불평할 게 없다'=잘 지낸다
+15,3,스몰토크,맨날 똑같지 뭐.,"Same old, same old.",세임 올드 세임 올드,same old:세임 올드:늘 같은 것
+16,1,감정,완전 기대돼!,I'm so excited!,아임 쏘 익사이티드,excited:익사이티드:신난·들뜬
+16,2,감정,완전 지쳤어.,I'm exhausted.,아임 이그조스티드,exhausted:이그조스티드:탈진한|tired보다 강함
+16,3,감정,그거 참 아쉽다.,That's a bummer.,댓츠 어 버머,bummer:버머:실망스러운 일|캐주얼 표현
+17,1,감정,대박! / 멋지다!,That's awesome!,댓츠 어썸,awesome:어썸:굉장한|미국인 최다 사용 감탄사급
+17,2,감정,말도 안 돼!,No way!,노 웨이,no way:노 웨이:믿기지 않음·강한 거절 양쪽 가능
+17,3,감정,장난하는 거지?,You've got to be kidding me.,유브 갓 투 비 키딩 미,kid:키드:농담하다|줄여서 You're kidding
+18,1,부탁,부탁 하나만 들어줄래?,Can you do me a favor?,캔 유 두 미 어 페이버,favor:페이버:부탁;do me a favor:두 미 어 페이버:부탁을 들어주다
+18,2,부탁,~해도 괜찮을까요?,Do you mind if I open the window?,두 유 마인드 이프 아이 오픈 더 윈도우,mind:마인드:꺼리다|허락 답은 No(=괜찮다) 주의
+18,3,부탁,그렇게 하세요.,Go ahead.,고 어헤드,go ahead:고 어헤드:먼저 하세요·그러세요
+19,1,직장,확인하고 다시 연락드릴게요.,I'll get back to you.,아일 겟 백 투 유,get back to ~:겟 백 투:~에게 회신하다|미국 직장 최다 빈도
+19,2,직장,내일 잠깐 얘기해요.,Let's touch base tomorrow.,렛츠 터치 베이스 투모로우,touch base:터치 베이스:짧게 연락·논의하다|야구 유래
+19,3,직장,진행 상황 계속 공유해 줘요.,Keep me in the loop.,킵 미 인 더 루프,in the loop:인 더 루프:정보 공유망 안에|이메일 CC 문화 표현
+20,1,직장,그렇게 합시다.,Sounds like a plan.,사운즈 라익 어 플랜,plan:플랜:계획|Sounds good의 확정 버전
+20,2,직장,오늘은 여기까지 하죠.,Let's call it a day.,렛츠 콜 잇 어 데이,call it a day:콜 잇 어 데이:하루 일을 마치다
+20,3,직장,지금 일이 너무 밀렸어요.,I'm swamped right now.,아임 스왐프트 라잇 나우,swamped:스왐프트:일에 파묻힌|busy보다 강함
+21,1,직장,회의 미룰 수 있을까요?,Can we push the meeting?,캔 위 푸시 더 미팅,push:푸시:(일정을) 미루다|당기는 건 move up
+21,2,직장,금요일로 옮겨도 될까요?,Can we move it to Friday?,캔 위 무브 잇 투 프라이데이,move:무브:옮기다;Friday:프라이데이:금요일
+21,3,직장,"요점만 말하면, 우리가 해냈어요.","Long story short, we got it.",롱 스토리 숏 위 갓 잇,long story short:롱 스토리 숏:요약하자면|보고·수다 양용
+22,1,전화,나중에 문자할게.,I'll text you later.,아일 텍스트 유 레이터,later:레이터:나중에
+22,2,전화,전화 못 받아서 미안해.,"Sorry, I missed your call.",쏘리 아이 미스트 유어 콜,miss:미스:놓치다;call:콜:전화
+22,3,전화,전화가 자꾸 끊겨.,You're breaking up.,유어 브레이킹 업,break up:브레익 업:(통화가) 끊기다|연인 이별과 동형 주의
+23,1,안부,너 괜찮아?,Are you okay?,아 유 오케이,okay:오케이:괜찮은
+23,2,안부,몸이 좀 안 좋아.,I don't feel so good.,아이 돈트 필 쏘 굿,feel:필:느끼다|아플 때의 구어 표현
+23,3,안부,오늘 힘든 하루였어.,It's been a rough day.,잇츠 빈 어 러프 데이,rough:러프:거친·힘든|hard day보다 구어적
+24,1,일상,뭐 먹고 싶어?,What do you feel like eating?,왓 두 유 필 라익 이팅,feel like ~ing:필 라익:~하고 싶다
+24,2,일상,배고파 죽겠어.,I'm starving.,아임 스타빙,starve:스타브:굶주리다|hungry의 과장 표현
+24,3,일상,먹으라면 먹지. / 배 좀 고프네.,I could eat.,아이 쿠드 잇,could:쿠드:~할 수도 있다|'좀 고파서 먹자면 먹겠다' 뉘앙스
+25,1,일상,네가 정해. / 너한테 맡길게.,It's up to you.,잇츠 업 투 유,up to ~:업 투:~에게 달린
+25,2,일상,난 어느 쪽이든 상관없어.,I don't mind either way.,아이 돈트 마인드 이더 웨이,either way:이더 웨이:어느 쪽이든;mind:마인드:꺼리다
+25,3,일상,알아서 골라줘.,Surprise me.,서프라이즈 미,surprise:서프라이즈:놀라게 하다|주문·선택 맡길 때
+26,1,리액션,그건 인정. / 일리 있네.,That's fair.,댓츠 페어,fair:페어:공정한·타당한|반박 접는 한마디
+26,2,리액션,내 말이 그 말이야. / 완전 공감.,Tell me about it.,텔 미 어바웃 잇,tell me about it:텔 미 어바웃 잇:격한 공감|글자 그대로 '말해줘' 아님
+26,3,리액션,"그니까 말이야, 맞지?","I know, right?",아이 노 라잇,I know right:아이 노 라잇:강한 동의|문자로 IKR로 줄임
+27,1,조언,너무 신경 쓰지 마.,Don't sweat it.,돈트 스웻 잇,sweat:스웻:땀 흘리다·걱정하다|Don't worry의 캐주얼판
+27,2,조언,진정해. / 무리하지 마.,Take it easy.,테익 잇 이지,take it easy:테익 잇 이지:쉬엄쉬엄 해|작별 인사로도 씀
+27,3,조언,넌 할 수 있어.,You've got this.,유브 갓 디스,got this:갓 디스:해낼 수 있다|응원의 표준 표현
+28,1,재회,이게 얼마 만이야!,Long time no see!,롱 타임 노 씨,long time no see:롱 타임 노 씨:오랜만이야
+28,2,재회,아니 이게 누구야!,Look who it is!,룩 후 잇 이즈,look who:룩 후:누군가 반갑게 발견했을 때
+28,3,재회,우리 조만간 회포 풀자.,We should catch up.,위 슈드 캐치 업,catch up:캐치 업:밀린 근황을 나누다
+29,1,작별,슬슬 가봐야겠다.,I'd better get going.,아이드 베터 겟 고잉,had better:해드 베터:~하는 게 좋다;get going:겟 고잉:출발하다
+29,2,작별,만나서 정말 반가웠어.,It was great seeing you.,잇 워즈 그레잇 씨잉 유,seeing:씨잉:만난 것|헤어질 때는 meet 아닌 see
+29,3,작별,잘 지내. / 몸 조심해.,Take care.,테익 케어,take care:테익 케어:작별 인사의 표준
+30,1,작별,좋은 하루 보내세요.,Have a good one.,해브 어 굿 원,a good one:어 굿 원:좋은 하루|점원·이웃 사이 국민 작별
+30,2,작별,가족들에게 안부 전해줘.,Say hi to your family for me.,세이 하이 투 유어 패밀리 포 미,say hi:세이 하이:안부를 전하다
+30,3,작별,연락하고 지내자.,Keep in touch.,킵 인 터치,keep in touch:킵 인 터치:연락을 유지하다

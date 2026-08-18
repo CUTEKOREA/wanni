@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render daily Thai expression cards (1080x1350 PNG) via headless Chrome.
+"""Render daily expression cards (1080x1350 PNG) via headless Chrome.
 
 Chrome is used instead of Pillow because Thai combining marks (tone marks,
 above/below vowels) need complex-script shaping that Pillow lacks without
@@ -11,7 +11,6 @@ import html
 import os
 import shutil
 import subprocess
-import sys
 import tempfile
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +18,18 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # Thai traditional day-of-week colors, Mon..Sun
 DAY_COLORS = ["#D9A800", "#D6437C", "#2E8B3E", "#D96C13", "#3B6FC4", "#6E4396", "#C0392B"]
 DAY_NAMES = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
+
+COURSES = {
+    "th": dict(csv="expressions.csv", prefix="", label="완니",
+               main_font="NSTH, NSKR, sans-serif", main_size=120,
+               band=["#B5313E", "#F4F1E8", "#2E3A87", "#F4F1E8", "#B5313E"],
+               brand="<b>วันนี้</b> · 매일 아침 8시"),
+    "en": dict(csv="expressions_en.csv", prefix="en_", label="완니 EN",
+               main_font="NSKR, sans-serif", main_size=86,
+               band=["#3C3B6E", "#FFFFFF", "#B22234", "#FFFFFF", "#3C3B6E"],
+               brand="<b>Today</b> · 매일 오전 11:40"),
+}
+BAND_FLEX = [1, 1, 2, 1, 1]
 
 CARD_TMPL = """<!doctype html>
 <meta charset="utf-8">
@@ -30,24 +41,21 @@ html, body {{ width: 1080px; height: 1350px; background: #FFFDF6; overflow: hidd
   font-family: NSKR, sans-serif; color: #241F14; }}
 .band {{ height: 36px; display: flex; flex-direction: column; }}
 .band i {{ display: block; }}
-.band .r {{ flex: 1; background: #B5313E; }}
-.band .w {{ flex: 1; background: #F4F1E8; }}
-.band .b {{ flex: 2; background: #2E3A87; }}
 .page {{ padding: 56px 80px 0; position: relative; height: 1314px; }}
 .head {{ display: flex; justify-content: space-between; align-items: baseline; }}
 .head .l {{ font-size: 30px; font-weight: 500; letter-spacing: .34em; color: #8A8371; }}
 .head .r {{ font-size: 31px; font-weight: 700; color: {accent}; }}
-.ko {{ margin-top: 78px; font-size: 58px; font-weight: 700; line-height: 1.42; }}
-.th {{ margin-top: 26px; font-family: NSTH, NSKR, sans-serif; font-size: 100px;
-  font-weight: 700; line-height: 1.42; color: #2E3A87; }}
-.pron {{ margin-top: 20px; font-size: 46px; font-weight: 500; color: #6B6455; }}
+.ko {{ margin-top: 56px; font-size: 70px; font-weight: 700; line-height: 1.35; }}
+.main {{ margin-top: 22px; font-family: {main_font}; font-size: {main_size}px;
+  font-weight: 700; line-height: 1.3; color: #2E3A87; }}
+.pron {{ margin-top: 18px; font-size: 55px; font-weight: 500; color: #6B6455; }}
 .pron b {{ color: {accent}; font-weight: 700; }}
-.div {{ margin-top: 52px; border-top: 3px dashed #E2DBC8; }}
-.vocab {{ margin-top: 44px; }}
-.vocab .row {{ display: flex; align-items: baseline; gap: 26px; margin-bottom: 30px; }}
-.vocab .tw {{ font-family: NSTH, NSKR, sans-serif; font-size: 46px; font-weight: 600; }}
-.vocab .m {{ font-size: 38px; color: #4C4636; }}
-.vocab .note {{ font-size: 32px; color: #8A8371; margin: -12px 0 26px; }}
+.div {{ margin-top: 38px; border-top: 3px dashed #E2DBC8; }}
+.vocab {{ margin-top: 36px; }}
+.vocab .row {{ display: flex; align-items: baseline; gap: 26px; margin-bottom: 22px; }}
+.vocab .tw {{ font-family: NSTH, NSKR, sans-serif; font-size: 55px; font-weight: 600; }}
+.vocab .m {{ font-size: 46px; color: #4C4636; }}
+.vocab .note {{ font-size: 38px; color: #8A8371; margin: -8px 0 22px; }}
 .foot {{ position: absolute; left: 80px; right: 80px; bottom: 58px;
   display: flex; justify-content: space-between; align-items: center; }}
 .foot .cat {{ font-size: 28px; font-weight: 700; color: {accent};
@@ -55,15 +63,15 @@ html, body {{ width: 1080px; height: 1350px; background: #FFFDF6; overflow: hidd
 .foot .brand {{ font-size: 28px; color: #8A8371; }}
 .foot .brand b {{ font-family: NSTH, NSKR, sans-serif; font-weight: 600; }}
 </style>
-<div class="band"><i class="r"></i><i class="w"></i><i class="b"></i><i class="w"></i><i class="r"></i></div>
+<div class="band">{band}</div>
 <div class="page">
-  <div class="head"><span class="l">완니 · DAY {day:03d}</span><span class="r">{weekday} {slot}/{total}</span></div>
+  <div class="head"><span class="l">{label} · DAY {day:03d}</span><span class="r">{weekday} {slot}/{total}</span></div>
   <div class="ko">{ko}</div>
-  <div class="th">{th}</div>
+  <div class="main">{main}</div>
   <div class="pron"><b>[</b>{pron}<b>]</b></div>
   <div class="div"></div>
   <div class="vocab">{vocab}</div>
-  <div class="foot"><span class="cat">{category}</span><span class="brand"><b>วันนี้</b> · 매일 아침 8시</span></div>
+  <div class="foot"><span class="cat">{category}</span><span class="brand">{brand}</span></div>
 </div>
 """
 
@@ -93,11 +101,16 @@ def vocab_html(spec):
     return "\n".join(out)
 
 
-def render_card(row, slot_no, total, weekday_idx, out_path):
+def render_card(row, slot_no, total, weekday_idx, out_path, course="th"):
+    cfg = COURSES[course]
+    band = "".join(f'<i style="flex:{fl};background:{c}"></i>'
+                   for fl, c in zip(BAND_FLEX, cfg["band"]))
     page = CARD_TMPL.format(
         root=ROOT, accent=DAY_COLORS[weekday_idx], day=int(row["day"]),
         weekday=DAY_NAMES[weekday_idx], slot=slot_no, total=total,
-        ko=html.escape(row["ko"]), th=html.escape(row["th"]),
+        label=cfg["label"], band=band, brand=cfg["brand"],
+        main_font=cfg["main_font"], main_size=cfg["main_size"],
+        ko=html.escape(row["ko"]), main=html.escape(row["text"]),
         pron=html.escape(row["pron"]), vocab=vocab_html(row["vocab"]),
         category=html.escape(row["category"]),
     )
@@ -116,22 +129,24 @@ def render_card(row, slot_no, total, weekday_idx, out_path):
     return out_path
 
 
-def load_day(day):
-    with open(os.path.join(ROOT, "data", "expressions.csv"), encoding="utf-8") as f:
+def load_day(day, course="th"):
+    path = os.path.join(ROOT, "data", COURSES[course]["csv"])
+    with open(path, encoding="utf-8") as f:
         rows = [r for r in csv.DictReader(f) if int(r["day"]) == day]
     rows.sort(key=lambda r: int(r["slot"]))
     if not rows:
-        raise SystemExit(f"no rows for day {day}")
+        raise SystemExit(f"no rows for day {day} in {path}")
     return rows
 
 
-def render_day(day, weekday_idx, out_dir):
+def render_day(day, weekday_idx, out_dir, course="th"):
     os.makedirs(out_dir, exist_ok=True)
-    rows = load_day(day)
+    rows = load_day(day, course)
+    prefix = COURSES[course]["prefix"]
     paths = []
     for i, row in enumerate(rows, 1):
-        p = os.path.join(out_dir, f"day{day:03d}_{i}.png")
-        render_card(row, i, len(rows), weekday_idx, p)
+        p = os.path.join(out_dir, f"{prefix}day{day:03d}_{i}.png")
+        render_card(row, i, len(rows), weekday_idx, p, course)
         paths.append(p)
     return rows, paths
 
@@ -142,8 +157,9 @@ if __name__ == "__main__":
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--day", type=int, required=True)
+    ap.add_argument("--course", default="th", choices=list(COURSES))
     ap.add_argument("--weekday", type=int, default=date.today().weekday())
     ap.add_argument("--out", default=os.path.join(ROOT, "out"))
     a = ap.parse_args()
-    _, paths = render_day(a.day, a.weekday, a.out)
+    _, paths = render_day(a.day, a.weekday, a.out, a.course)
     print("\n".join(paths))

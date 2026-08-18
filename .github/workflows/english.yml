@@ -1,15 +1,15 @@
-name: daily-send
+name: daily-send-en
 
 on:
   schedule:
-    - cron: "40 22 * * *"   # 07:40 KST; daily.py sleeps until 23:00 UTC = 08:00 KST
+    - cron: "20 2 * * *"   # 11:20 KST; daily.py sleeps until 02:40 UTC = 11:40 KST
   workflow_dispatch:
     inputs:
       day:
         description: "day number override (blank = auto)"
         required: false
 
-concurrency: daily-send
+concurrency: daily-send-en
 
 permissions:
   contents: write
@@ -22,7 +22,7 @@ jobs:
       KAKAO_REST_KEY: ${{ secrets.KAKAO_REST_KEY }}
       KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
       TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
-      START_DATE: "2026-08-19"
+      START_DATE_EN: "2026-08-20"
       CHROME_BIN: google-chrome
     steps:
       - uses: actions/checkout@v4
@@ -39,12 +39,12 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             if [ -n "$DAY_OVERRIDE" ]; then
-              python daily.py --day "$DAY_OVERRIDE"
+              python daily.py --course en --day "$DAY_OVERRIDE"
             else
-              python daily.py
+              python daily.py --course en
             fi
           else
-            python daily.py --wait "23:00"
+            python daily.py --course en --wait "02:40"
           fi
 
       - name: persist rotated refresh token
@@ -65,5 +65,5 @@ jobs:
         run: |
           gh issue create \
             --repo "$GITHUB_REPOSITORY" \
-            --title "완니 발송 실패 $(date -u -d '+9 hours' +%F)" \
+            --title "완니EN 발송 실패 $(date -u -d '+9 hours' +%F)" \
             --body "실패 런: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

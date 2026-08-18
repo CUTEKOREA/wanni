@@ -68,7 +68,8 @@ def upload_image(access_token, path):
     return r.json()["infos"]["original"]["url"]
 
 
-def send_feed(access_token, image_url, title, desc, link_url, w=1080, h=1350):
+def send_feed(access_token, image_url, title, desc, content_link, button_link,
+              w=1080, h=1350):
     template = {
         "object_type": "feed",
         "content": {
@@ -77,10 +78,10 @@ def send_feed(access_token, image_url, title, desc, link_url, w=1080, h=1350):
             "image_url": image_url,
             "image_width": w,
             "image_height": h,
-            "link": {"web_url": link_url, "mobile_web_url": link_url},
+            "link": {"web_url": content_link, "mobile_web_url": content_link},
         },
         "buttons": [{"title": "발음 듣기",
-                     "link": {"web_url": link_url, "mobile_web_url": link_url}}],
+                     "link": {"web_url": button_link, "mobile_web_url": button_link}}],
     }
     r = requests.post(f"{KAPI}/v2/api/talk/memo/default/send",
                       headers={"Authorization": f"Bearer {access_token}"},
