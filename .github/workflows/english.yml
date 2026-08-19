@@ -2,7 +2,7 @@ name: daily-send-en
 
 on:
   schedule:
-    - cron: "20 2 * * *"   # 11:20 KST; daily.py sleeps until 02:40 UTC = 11:40 KST
+    - cron: "10 1 * * *"   # 10:10 KST wake (90m buffer); send at 02:40 UTC = 11:40 KST
   workflow_dispatch:
     inputs:
       day:
