@@ -44,8 +44,11 @@ def wait_until(hhmm_utc):
         time.sleep(delta)
 
 
-def tts_link(text, sl):
-    return (f"https://translate.google.com/?sl={sl}&tl=ko&op=translate&text="
+PAGES = "https://cutekorea.github.io/wanni"
+
+
+def audio_link(course, day, slot, text):
+    return (f"{PAGES}/p.html?f=audio/{course}/d{day:02d}_{slot}.mp3&t="
             + urllib.parse.quote(text))
 
 
@@ -81,7 +84,7 @@ def main():
                     title=f'{meta["title"]} {i}/{len(rows)} · DAY {day:03d}',
                     desc=f'{row["ko"]}\n{row["text"]} [{row["pron"]}]',
                     content_link=url,  # tap card -> open full image (zoomable)
-                    button_link=tts_link(row["text"], meta["sl"]))
+                    button_link=audio_link(a.course, day, int(row["slot"]), row["text"]))
                 break
             except Exception:
                 if attempt == 2:
