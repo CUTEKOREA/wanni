@@ -4,5 +4,5 @@ tokens.json
 logs/
 __pycache__/
 .env
-*.html
+/*.html
 !*.yml
