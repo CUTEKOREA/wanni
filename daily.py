@@ -48,6 +48,7 @@ PAGES = "https://cutekorea.github.io/wanni"
 
 
 def player_link(course, day, slot, image_url):
+    image_url = image_url.replace("http://", "https://", 1)  # avoid mixed content on the https player
     return (f"{PAGES}/p.html?f=audio/{course}/d{day:02d}_{slot}.mp3&i="
             + urllib.parse.quote(image_url, safe=""))
 
