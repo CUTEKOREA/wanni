@@ -3,33 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>완니 발음</title>
+<title>완니</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-    align-items: center; gap: 28px; background: #FFFDF6; color: #241F14; padding: 24px;
-    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; text-align: center; }
-  .text { font-size: 34px; font-weight: 700; line-height: 1.4; word-break: keep-all;
-    color: #2E3A87; max-width: 26em; }
-  button { font-size: 22px; font-weight: 700; border: none; border-radius: 999px;
-    padding: 18px 40px; cursor: pointer; }
-  #play { background: #F2C900; color: #3D3300; font-size: 26px; }
+  body { min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+    background: #EFEBE0; font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+  .card { width: 100%; max-width: 540px; }
+  .card img { width: 100%; display: block; }
+  .bar { position: sticky; bottom: 0; width: 100%; max-width: 540px; display: flex; gap: 10px;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); background: #FFFDF6;
+    box-shadow: 0 -6px 18px rgba(30,25,10,.12); }
+  button { flex: 1; font-size: 20px; font-weight: 700; border: none; border-radius: 14px;
+    padding: 16px 0; cursor: pointer; font-family: inherit; }
+  #play { background: #F2C900; color: #3D3300; }
   #slow { background: #EFEAD9; color: #6B6455; }
-  .brand { color: #B9B29E; font-size: 14px; margin-top: 12px; }
 </style>
 </head>
 <body>
-  <div class="text" id="txt"></div>
-  <button id="play">▶ 발음 듣기</button>
-  <button id="slow">🐢 천천히</button>
-  <div class="brand">완니 · วันนี้ · Today · 今天</div>
+  <div class="card"><img id="im" alt=""></div>
+  <div class="bar">
+    <button id="play">▶ 발음 듣기</button>
+    <button id="slow">🐢 천천히</button>
+  </div>
   <audio id="au"></audio>
   <script>
     const q = new URLSearchParams(location.search);
-    const f = q.get("f") || "";
-    document.getElementById("txt").textContent = q.get("t") || "";
+    const f = q.get("f") || "", i = q.get("i") || "";
     const au = document.getElementById("au");
     if (/^audio\/(th|en|zh)\/[a-z0-9_]+\.mp3$/.test(f)) au.src = f;
+    if (/^https?:\/\/[a-z0-9.-]*kakaocdn\.net\//.test(i)) document.getElementById("im").src = i;
     function go(rate) { au.pause(); au.currentTime = 0; au.playbackRate = rate; au.play(); }
     document.getElementById("play").onclick = () => go(1.0);
     document.getElementById("slow").onclick = () => go(0.7);

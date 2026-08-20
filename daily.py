@@ -47,9 +47,9 @@ def wait_until(hhmm_utc):
 PAGES = "https://cutekorea.github.io/wanni"
 
 
-def audio_link(course, day, slot, text):
-    return (f"{PAGES}/p.html?f=audio/{course}/d{day:02d}_{slot}.mp3&t="
-            + urllib.parse.quote(text))
+def player_link(course, day, slot, image_url):
+    return (f"{PAGES}/p.html?f=audio/{course}/d{day:02d}_{slot}.mp3&i="
+            + urllib.parse.quote(image_url, safe=""))
 
 
 def main():
@@ -77,14 +77,17 @@ def main():
 
     for i, (row, path) in enumerate(zip(rows, paths), 1):
         url = kakao.upload_image(tok["access_token"], path)
+        # tap card -> player page: full card image + pronunciation audio
+        # (buttons don't render in the self-chat, so the card itself is the button)
+        link = player_link(a.course, day, int(row["slot"]), url)
         for attempt in (1, 2):
             try:
                 kakao.send_feed(
                     tok["access_token"], url,
                     title=f'{meta["title"]} {i}/{len(rows)} · DAY {day:03d}',
-                    desc=f'{row["ko"]}\n{row["text"]} [{row["pron"]}]',
-                    content_link=url,  # tap card -> open full image (zoomable)
-                    button_link=audio_link(a.course, day, int(row["slot"]), row["text"]))
+                    desc=f'{row["ko"]}\n{row["text"]} [{row["pron"]}] · 탭하면 발음 재생',
+                    content_link=link,
+                    button_link=link)
                 break
             except Exception:
                 if attempt == 2:
