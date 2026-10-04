@@ -34,12 +34,22 @@ def today_kst():
     return datetime.now(KST).date()
 
 
-def wait_until(hhmm_utc):
+def wait_seconds(now, hhmm_utc):
+    """Seconds to sleep until HH:MM UTC; 0 once that time has passed.
+
+    GitHub cron can start hours late. A run that starts after UTC midnight sees
+    the target ~23h ahead; the cron buffer is 90m, so a wait over 12h means the
+    send time already passed and we send now instead of sleeping into the 6h job limit.
+    """
     h, m = map(int, hhmm_utc.split(":"))
-    now = datetime.now(timezone.utc)
     target = now.replace(hour=h, minute=m, second=0, microsecond=0)
     delta = (target - now).total_seconds()
-    if delta > 0:
+    return delta if 0 < delta < 12 * 3600 else 0
+
+
+def wait_until(hhmm_utc):
+    delta = wait_seconds(datetime.now(timezone.utc), hhmm_utc)
+    if delta:
         print(f"waiting {int(delta)}s until {hhmm_utc} UTC")
         time.sleep(delta)
 
